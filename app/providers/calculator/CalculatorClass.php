@@ -38,7 +38,7 @@ class CalculatorClass {
 	*/
     public function calculate(){
     	$response = array();
-    	$instructions = $this->instructions;
+    	$instructions = $this->getInstructions();
     	foreach ($instructions as $instruction) {
     		$matrix = new Matrix\MatrixClass($instruction->getNumberDimensions());
     		foreach ($instruction->getTesTcases() as $operation) {
@@ -56,10 +56,14 @@ class CalculatorClass {
     }
 
     public function setResponses($response){
-    	$this->response = $response;
+    	$this->responses = $response;
     }
 
     public function getResponses(){
-    	return $this->response;
+    	return $this->responses;
+    }
+    
+    public function getInstructions(){
+    	return $this->instructions;
     }
 }

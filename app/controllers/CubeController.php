@@ -22,12 +22,12 @@ class CubeController extends BaseController {
 	public function calculate(){
 		$request = Input::get('instructions');
 		$calculator = CalculatorClass::read($request);
-		if($calculator){
-			$calculator->calculate();
-			return parent::to_json($calculator->getResponses());	
-		} else {
-			return parent::to_json([], 422);	
-		}
+		if(null !== $calculator->getInstructions()){
+		 	$calculator->calculate();
+		 	return parent::to_json($calculator->getResponses());	
+		 } else {
+		 	return parent::to_json(["Invalid parameters"], 422);	
+		 }
 		
 	}
 
