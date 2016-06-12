@@ -67,7 +67,13 @@ class ReaderClass {
 				$current_line = $i + 1;
 	    		for ($test_case = $current_line; $test_case < $group_test_cases->getNumberInstructions() + $current_line; $test_case++) { 
 	    			$line = explode(" ",$instructions[$test_case]);
-	    			array_push( $temp_test_cases, $group_test_cases->become_readable_testcase($line) );
+	    			$readed_line =  $group_test_cases->become_readable_testcase($line);
+	    			if ($readed_line != []){ 
+	    				array_push( $temp_test_cases, $readed_line);
+	    			}
+	    			else{ 
+	    				return null;
+	    			}
 	    		}
 	    		$group_test_cases->setTestCases($temp_test_cases);
 	    		$i += $group_test_cases->getNumberInstructions();
