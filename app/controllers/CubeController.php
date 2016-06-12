@@ -22,7 +22,8 @@ class CubeController extends BaseController {
 	public function calculate(){
 		$request = Input::get('instructions');
 		$calculator = CalculatorClass::read($request);
-		print_r($calculator->calculate()->getResponses());
+		$calculator->calculate();
+		print_r($calculator->getResponses());
 	}
 
 }
