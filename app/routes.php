@@ -11,7 +11,8 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
+Route::get('/', function(){
+	return View::make('cube.index');
 });
+Route::post('cube_summation', 'CubeController@calculate');
+

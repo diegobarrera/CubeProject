@@ -1,9 +1,6 @@
-<?php 
-namespace App/Providers/matrix;
+<?php namespace App\Providers\Calculator\Matrix;
 
-/**
-* 
-*/
+
 class Matrix{
 
 	/**
@@ -13,7 +10,7 @@ class Matrix{
 	private $dimension;
 	
 	/**
-	* 
+	* Array with the values
 	* @var array
 	*/
 	private $values;
