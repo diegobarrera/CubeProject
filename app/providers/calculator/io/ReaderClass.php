@@ -54,34 +54,40 @@ class ReaderClass {
     	$this->test_cases = $test_cases;
     }
 
+    /**
+    * Map Input information to a ReaderClass
+    *
+    * @param instructions
+    * @return array of ReaderClass
+    */
     public function become_readable($instructions){
     	$all_test_cases = null;
     	$instructions = explode("\n", $instructions);
+
     	if ($this->validate_T_variable($instructions[0])){
     		$all_test_cases = array();
 	    	for ($i = 1; $i < count($instructions); $i++) { 
-	    			$group_test_cases = new ReaderClass();
-	    			$N_and_M = explode(" ", $instructions[$i]);
-	    			$group_test_cases->setNumberDimensions($N_and_M[0]);
-	    			$group_test_cases->setNumberInstructions($N_and_M[1]);
-					$temp_test_cases = array();
-					$current_line = $i + 1;
-		    		for ($test_case = $current_line; $test_case < $group_test_cases->getNumberInstructions() + $current_line; $test_case++) { 
-		    			$line = explode(" ",$instructions[$test_case]);
-		    			$readed_line =  $group_test_cases->become_readable_testcase($line);
-		    			if ($readed_line != []){ 
-		    				array_push( $temp_test_cases, $readed_line);
-		    			} else { 
-		    				return null;
-		    			}
-		    		}
-		    		$group_test_cases->setTestCases($temp_test_cases);
-		    		$i += $group_test_cases->getNumberInstructions();
-		    		array_push($all_test_cases, $group_test_cases);
+    			$group_test_cases = new ReaderClass();
+    			$N_and_M = explode(" ", $instructions[$i]);
+    			$group_test_cases->setNumberDimensions($N_and_M[0]);
+    			$group_test_cases->setNumberInstructions($N_and_M[1]);
+				$temp_test_cases = array();
+				$current_line = $i + 1;
+	    		for ($test_case = $current_line; $test_case < $group_test_cases->getNumberInstructions() + $current_line; $test_case++) { 
+	    			$line = explode(" ",$instructions[$test_case]);
+	    			$readed_line =  $group_test_cases->become_readable_testcase($line);
+	    			if ($readed_line != []){ 
+	    				array_push( $temp_test_cases, $readed_line);
+	    			} else { 
+	    				return null;
+	    			}
+	    		}
+	    		$group_test_cases->setTestCases($temp_test_cases);
+	    		$i += $group_test_cases->getNumberInstructions();
+	    		array_push($all_test_cases, $group_test_cases);
 	    	}
 	    }
 	    return $all_test_cases;
-    	
     }
 
     /**
@@ -160,6 +166,11 @@ class ReaderClass {
     	return true;
     }
 
+    /**
+    * Validate T input variable
+    *
+    * @return bool
+    */
     public function validate_T_variable($T){
 		if (($T >= 1 && $T <= 50)) {
   			return true;

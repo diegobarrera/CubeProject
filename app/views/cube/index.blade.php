@@ -1,3 +1,5 @@
+@extends('layouts.application')
+
 <div class="container">
     <h1>Code Challenge</h1>
     <h2>Cube Summation</h2>

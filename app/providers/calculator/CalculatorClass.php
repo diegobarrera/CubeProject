@@ -18,8 +18,8 @@ class CalculatorClass {
 	* Constructor
 	*
 	*/
-    //public function __constructor(){
-    //}
+    public function __constructor(){
+    }
 
 	/**
 	* Calculate the instructions given

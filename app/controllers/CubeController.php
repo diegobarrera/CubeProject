@@ -2,6 +2,8 @@
 
 class CubeController extends BaseController {
 
+	protected $layout = 'layouts.application';
+	
 	/*
 	|--------------------------------------------------------------------------
 	| Default Home Controller
@@ -24,9 +26,9 @@ class CubeController extends BaseController {
 		$calculator = CalculatorClass::read($request);
 		if(null !== $calculator->getInstructions()){
 		 	$calculator->calculate();
-		 	return parent::to_json($calculator->getResponses());	
+		 	return View::make('cube.result', [ "results" => $calculator->getResponses() ]);
 		 } else {
-		 	return parent::to_json(["Invalid parameters"], 422);	
+		 	return View::make('cube.result', [ "results" => ["Invalid parameters"] ]);
 		 }
 		
 	}
