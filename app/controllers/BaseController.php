@@ -15,6 +15,10 @@ class BaseController extends Controller {
 		}
 	}
 
+	/**
+	* Response JSON helper
+	*
+	*/
 	public static function to_json($body, $status_code = 200){
 		return Response::json(array("results" => $body), $status_code);
 	}

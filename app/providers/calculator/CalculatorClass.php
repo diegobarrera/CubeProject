@@ -39,15 +39,17 @@ class CalculatorClass {
     public function calculate(){
     	$response = array();
     	$instructions = $this->getInstructions();
-    	foreach ($instructions as $instruction) {
-    		$matrix = new Matrix\MatrixClass($instruction->getNumberDimensions());
-    		foreach ($instruction->getTesTcases() as $operation) {
-    			$result = $matrix->calculate_operation($operation);
-    			if ($result!=='UPDATED') array_push($response, $result);
-    		}
-    	}    	
-    	$this->setResponses($response);
-    	return $this;
+    	if(isset($instructions)){
+	    	foreach ($instructions as $instruction) {
+	    		$matrix = new Matrix\MatrixClass($instruction->getNumberDimensions());
+	    		foreach ($instruction->getTesTcases() as $operation) {
+	    			$result = $matrix->calculate_operation($operation);
+	    			if ($result!=='UPDATED') array_push($response, $result);
+	    		}
+	    	}    	
+	    	$this->setResponses($response);
+    	}
+		return $this;
     }
 
 	
