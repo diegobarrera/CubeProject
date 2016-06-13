@@ -7,6 +7,7 @@
 	    <h3>Input:</h3>
 	    {{ Form::open(array('action' => 'CubeController@calculate', 'method' => 'post')) }}
 	        {{ Form::textarea('instructions') }}
+	        <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 	        <br><br>
 	        {{Form::submit('Calculate', ['class' => 'btn btn-large btn-primary'])}}
 	    {{ Form::close() }}

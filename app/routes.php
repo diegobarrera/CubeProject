@@ -14,5 +14,7 @@
 Route::get('/', function(){
 	return View::make('cube.index');
 });
-Route::post('cube_summation', 'CubeController@calculate');
+Route::post('cube_summation', array('before' => 'csrf',  'uses'=>'CubeController@calculate', function(){
+    
+}));
 
