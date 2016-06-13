@@ -21,6 +21,9 @@ class CubeController extends BaseController {
 		return View::make('hello');
 	}
 
+	/*
+	|	Route::post('/cube_summation', 'CubeController@calculate');
+	*/
 	public function calculate(){
 		$request = Input::get('instructions');
 		$calculator = CalculatorClass::read($request);
